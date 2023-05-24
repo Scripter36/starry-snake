@@ -107,8 +107,8 @@ func update_grid():
 			$Grid.set_color(pos.x, pos.y, Color(0.15, 0.15, 0.15))
 			
 	for p in stars:
-		var v : float = clamp(0.5 * stars[p], 0.0, 1.0)
-		$Grid.set_color(p.x, p.y, Color(0.5 + 0.5*v, 0.5 + 0.5*v, 0))
+		var v : float = clamp(0.2 * stars[p], 0.0, 1.0)
+		$Grid.set_color(p.x, p.y, Color(v, v, 0))
 
 	for pos in snake:
 		$Grid.set_color(pos.x, pos.y, Color(1.0, 1.0, 1.0))
@@ -116,3 +116,8 @@ func update_grid():
 	$Grid.set_color(apple.x, apple.y, Color(1.0, 0.5, 0.5))
 	
 	$Grid.queue_redraw()
+	
+	# $Grid.reset()
+	# for i in range(20):
+	# 	var v = 0.2 * randi_range(1, 5)
+	# 	$Grid.set_color(randi_range(0, 19), randi_range(0, 19), Color(v, v, 0))

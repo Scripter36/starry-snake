@@ -4,8 +4,8 @@ class_name Grid
 
 var grid_data: Array[Color] = []
 
-const GRID_SIZE: int = 16
-const GRID_WIDTH: float = 64.0
+const GRID_SIZE: int = 20
+const GRID_WIDTH: float = 48.0
 const GRID_MARGIN: float = 8.0
 
 func reset():
