@@ -1,4 +1,4 @@
-extends Control
+extends Node
 
 var snake: Array[Vector2i]
 var snake_head: Vector2i
@@ -11,7 +11,7 @@ var prev_snake_history: Array[Array]
 
 var stars: Dictionary = {}
 
-@onready var GRID_SIZE = $Grid.GRID_SIZE
+@onready var GRID_SIZE = $Scene.grid_size
 
 var accept_input = true
 var game_ready = false
@@ -98,26 +98,24 @@ func _on_timer_timeout():
 	update_grid()
 			
 func update_grid():
-	$Grid.reset()
+	$Scene.reset()
 
 	if snake.size() > 0 and snake.size() < prev_snake_history.size():
 		for pos in prev_snake_history[snake.size() - 1]:
-			$Grid.set_color(pos.x, pos.y, Color(0.15, 0.15, 0.15))
+			$Scene.set_color(pos.x, pos.y, Color(0.15, 0.15, 0.15))
 		for pos in snake_history[snake.size() - 1]:
-			$Grid.set_color(pos.x, pos.y, Color(0.15, 0.15, 0.15))
+			$Scene.set_color(pos.x, pos.y, Color(0.15, 0.15, 0.15))
 			
 	for p in stars:
 		var v : float = clamp(0.2 * stars[p], 0.0, 1.0)
-		$Grid.set_color(p.x, p.y, Color(v, v, 0))
+		$Scene.set_color(p.x, p.y, Color(v, v, 0))
 
 	for pos in snake:
-		$Grid.set_color(pos.x, pos.y, Color(1.0, 1.0, 1.0))
+		$Scene.set_color(pos.x, pos.y, Color(1.0, 1.0, 1.0))
 		
-	$Grid.set_color(apple.x, apple.y, Color(1.0, 0.5, 0.5))
+	$Scene.set_color(apple.x, apple.y, Color(1.0, 0.5, 0.5))
 	
-	$Grid.queue_redraw()
-	
-	# $Grid.reset()
+	# $Scene.reset()
 	# for i in range(20):
 	# 	var v = 0.2 * randi_range(1, 5)
-	# 	$Grid.set_color(randi_range(0, 19), randi_range(0, 19), Color(v, v, 0))
+	# 	$Scene.set_color(randi_range(0, 19), randi_range(0, 19), Color(v, v, 0))

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw4syyirutaw5"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_kygxj"]
+radius = 0.01
+height = 0.02
+
+[node name="LED" type="Node3D"]
+
+[node name="Sphere" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_kygxj")
+
+[node name="Light" type="OmniLight3D" parent="."]
+light_energy = 0.01
+light_size = 0.01
+omni_range = 0.3
